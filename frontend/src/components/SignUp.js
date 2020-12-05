@@ -59,7 +59,7 @@ class SignUp extends React.Component {
         return (
 
             <div class="flex flex-col">
-                <h1 class="font-bold text-4xl mt-20 mb-4">Create an Account.</h1>
+                <h1 class="font-bold text-4xl mt-20 mb-4" style={{ 'marginLeft': 'auto', 'marginRight': 'auto' }}>Create an Account.</h1>
                 <div class="bg-white shadow-sm rounded-lg mb-4  my-2 w-6/12 flex-center object-center" style={{ 'marginLeft': 'auto', 'marginRight': 'auto' }}>
                     <div class="px-8 pt-6 pb-8 ">
                         <div class="-mx-3 md:flex mb-6 text-left ">

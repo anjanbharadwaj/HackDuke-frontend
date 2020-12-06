@@ -46,6 +46,8 @@ function RestaurantDonationCard(props) {
                                 let amount = gd.donationAmount;
                                 let foodGroup = gd.foodTypeId.group;
 
+                                date = date.slice(0,10);
+
                                 resultList.push({name: name, date: date, amount: amount, foodGroup: foodGroup});
                             }
                         }

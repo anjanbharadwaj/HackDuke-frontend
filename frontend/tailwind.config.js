@@ -14,7 +14,6 @@ module.exports = {
     extend: {
       animation: ['responsive', 'motion-safe', 'motion-reduce','hover', 'focus']
     },
-    
   },
   plugins: [],
 }

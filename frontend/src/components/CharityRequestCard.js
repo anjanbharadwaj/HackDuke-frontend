@@ -7,6 +7,7 @@ import moment from 'moment';
 
 function CharityRequestCard(props) {
     // const { createdDate, donationRequestIds } = props.latestReq;
+    console.log("IN CHARITY REQUEST CARD")
     console.log(props.latestReq);
 
 
@@ -38,8 +39,8 @@ function CharityRequestCard(props) {
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-100">
                                     {props.latestReq ? Object.keys(props.latestReq).map(group => {
-                                        
-                                        
+
+
                                         console.log(props.latestReq.group);
                                         return (<FoodRequestCard req={props.latestReq[group]} group={group} />)
                                     }

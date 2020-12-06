@@ -87,6 +87,7 @@ class LogIn extends React.Component {
                 if (result.data.message == "success") {
                     console.log("Log in successful! Token: " + result.data.token);
                     localStorage.setItem('token', result.data.token)
+                    localStorage.setItem('usertype', result.data.type)
                     this.props.history.push('/home');
                 } else {
                     console.log("Did not log in");

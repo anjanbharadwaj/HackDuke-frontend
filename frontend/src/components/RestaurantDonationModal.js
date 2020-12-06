@@ -106,7 +106,6 @@ class RestaurantDonationModal extends React.Component {
 
                 console.log(result.data)
 
-                // let extraurl = "https://us-central1-hackduke-foodapp.cloudfunctions.net/hello_http"
                 // axios({
                 //     method: 'post',
                 //     url: extraurl,
@@ -126,7 +125,7 @@ class RestaurantDonationModal extends React.Component {
 //         })
                 axios({
                     method: 'post',
-                    url: "https://us-west2-hackduke-foodapp.cloudfunctions.net/run_optimize/",
+                    url: "URL_REMOVED",
                     headers: {
                         'Access-Control-Allow-Origin': '*',
                         'Content-Type': 'application/json',

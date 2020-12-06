@@ -2,10 +2,19 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'blue-reg': "#648AF2",
+        'gray-dim': "#7A86A1",
+        'blue-light': '#CAE7FE'
+      }
+    }
   },
   variants: {
-    extend: {},
+    extend: {
+      animation: ['responsive', 'motion-safe', 'motion-reduce','hover', 'focus']
+    },
+
   },
   plugins: [],
 }

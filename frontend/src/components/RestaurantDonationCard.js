@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import ReactDOM from 'react-dom';
 import {useSpring, animated} from "react-spring";
 import FoodRequestCard from "./FoodRequestCard";
-
+import RestaurantFoodRequestCard from './RestaurantFoodRequestCard'
 import axios from 'axios'
 
 
@@ -21,8 +21,8 @@ function RestaurantDonationCard(props) {
                 'Bearer ' + token}
         }).then((result) => {
             axios({
-                method: 'post',
-                url: "http://localhost:3001/charity/latest_request",
+                method: 'get',
+                url: "http://localhost:3001/restaurant/donationbatches",
                 data: {id: result.data._id},
                 headers: {'Authorization':
                     'Bearer ' + token}
@@ -32,10 +32,26 @@ function RestaurantDonationCard(props) {
 
                         let resultList = [];
 
-                        for (const prop in result.data) {
-                            resultList.push({foodType: prop, other: result.data});
+                        let donationBatches = result.data.donationBatches;
+
+                        for (const db of donationBatches) {
+                            let givenDonationIds = db.givenDonationIds;
+
+                            for (const gd of givenDonationIds) {
+                                console.log("GD")
+                                console.log(gd)
+
+                                let name = gd.charityId.name;
+                                let date = gd.deliveredDate;
+                                let amount = gd.donationAmount;
+                                let foodGroup = gd.foodTypeId.group;
+
+                                resultList.push({name: name, date: date, amount: amount, foodGroup: foodGroup});
+                            }
                         }
 
+                        console.log("resultList")
+                        console.log(resultList)
                         // put result into cardList
                         setCardList(resultList);
                     },(err) => {
@@ -65,20 +81,28 @@ function RestaurantDonationCard(props) {
                                 <tr>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Status
+                                        Date
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Item Name
+                                        Charity
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                                        Quantity
+                                        Food
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Amount
                                     </th>
                                 </tr>
                                 </thead>
                                 <tbody class="bg-white divide-y divide-gray-100">
-
+                                {list.map(data => {
+                                        console.log(data);
+                                        return (<RestaurantFoodRequestCard data={data}/>)
+                                    }
+                                )}
                                 </tbody>
 
                             </table>
